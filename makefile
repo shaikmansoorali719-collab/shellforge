@@ -1,12 +1,13 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c11 -Iinclude
-SRC := $(wildcard src/*.c)
+LDFLAGS = -lreadline
+
 TARGET = shellforge
 
-$(TARGET): $(SRC)
-	$(CC) $(CFLAGS) $(SRC) -lreadline -o $(TARGET)
+SRC = src/main.c src/lexer.c src/token.c src/history.c
+
+$(TARGET):
+	$(CC) $(CFLAGS) $(SRC) $(LDFLAGS) -o $(TARGET)
 
 clean:
 	rm -f $(TARGET)
-
-.PHONY: clean
