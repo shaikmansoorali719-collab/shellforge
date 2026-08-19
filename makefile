@@ -4,9 +4,14 @@ LDFLAGS = -lreadline
 
 TARGET = shellforge
 
-SRC = src/main.c src/lexer.c src/token.c src/history.c
+SRC = src/main.c \
+      src/lexer.c \
+      src/token.c \
+      src/history.c \
+      src/parser.c \
+      src/expand.c
 
-$(TARGET):
+$(TARGET): $(SRC)
 	$(CC) $(CFLAGS) $(SRC) $(LDFLAGS) -o $(TARGET)
 
 clean:
